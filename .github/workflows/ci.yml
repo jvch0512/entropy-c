@@ -1,5 +1,8 @@
 name: CI
 on: [push, pull_request]
+permissions:
+  contents: read
+
 jobs:
   test:
     runs-on: ${{ matrix.os }}
@@ -8,5 +11,5 @@ jobs:
         os: [ubuntu-latest, macos-latest]
         cc: [gcc, clang]
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
       - run: make CC=${{ matrix.cc }} test all
